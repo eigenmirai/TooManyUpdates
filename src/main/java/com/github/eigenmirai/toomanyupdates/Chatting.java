@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class Chatting {
     Minecraft mc = Minecraft.getMinecraft();
+    private boolean sentMessage = false;
 
     @SubscribeEvent
     public void onPlayerJoin(EntityJoinWorldEvent event) {
@@ -23,6 +24,8 @@ public class Chatting {
 
             if (!Loader.isModLoaded("skytils")) {
                 mc.thePlayer.addChatMessage(new ChatComponentText(TooManyUpdates.chatPrefix + "Did not detect skytils, why do you even have this mod."));
+                sentMessage = true;
+                return;
             }
 
             GuiHandler.cancelledUpdates.forEach((name, url) -> {
@@ -39,6 +42,7 @@ public class Chatting {
                 button.setChatStyle(style);
                 mc.thePlayer.addChatMessage(new ChatComponentText(TooManyUpdates.chatPrefix + msg).appendSibling(button));
             });
+            sentMessage = true;
         }
     }
 }
