@@ -1,14 +1,14 @@
 [
   {
     "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
+    "name": "TooManyUpdates",
+    "description": "Prevents certain mods from annoying you with update GUIs",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
+    "url": "https://github.com/eigenmirai/TooManyUpdates",
     "updateUrl": "",
     "authorList": [
-      "You"
+      "eigenmirai"
     ],
     "credits": "",
     "logoFile": "",

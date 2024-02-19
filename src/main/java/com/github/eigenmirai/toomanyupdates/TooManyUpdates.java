@@ -5,14 +5,14 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(
-        modid = UpdateManagerMod.MOD_ID,
-        name = UpdateManagerMod.NAME,
-        version = UpdateManagerMod.VERSION,
+        modid = TooManyUpdates.MOD_ID,
+        name = TooManyUpdates.NAME,
+        version = TooManyUpdates.VERSION,
         useMetadata = true,
         clientSideOnly = true
 )
-public class UpdateManagerMod {
-    public static final String MOD_ID = "TooManyUpdates";
+public class TooManyUpdates {
+    public static final String MOD_ID = "toomanyupdates";
     public static final String NAME = "TooManyUpdates";
     public static final String VERSION = "1.0.0";
 
