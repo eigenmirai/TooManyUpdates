@@ -20,7 +20,7 @@ public class Chatting {
     public void onPlayerJoin(EntityJoinWorldEvent event) {
         if (!(event.entity instanceof EntityPlayer) || mc.thePlayer == null) return;
         EntityPlayer eventPlayer = (EntityPlayer) event.entity;
-        if (eventPlayer.getUniqueID().equals(mc.thePlayer.getUniqueID())) {
+        if (eventPlayer.getUniqueID().equals(mc.thePlayer.getUniqueID()) && !sentMessage) {
 
             if (!Loader.isModLoaded("skytils")) {
                 mc.thePlayer.addChatMessage(new ChatComponentText(TooManyUpdates.chatPrefix + "Did not detect skytils, why do you even have this mod."));
