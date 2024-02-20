@@ -3,6 +3,8 @@ package com.github.eigenmirai.toomanyupdates;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(
         modid = TooManyUpdates.MOD_ID,
@@ -16,6 +18,7 @@ public class TooManyUpdates {
     public static final String NAME = "TooManyUpdates";
     public static final String VERSION = "1.0.0";
 
+    public static final Logger LOGGER = LogManager.getLogger(TooManyUpdates.class);
     public static final String chatPrefix = "§5§lTooManyUpdates §8»§r ";
 
     @Mod.EventHandler

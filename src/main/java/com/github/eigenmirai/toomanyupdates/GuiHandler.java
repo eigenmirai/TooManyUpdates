@@ -1,8 +1,7 @@
 package com.github.eigenmirai.toomanyupdates;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.lang.reflect.Constructor;
@@ -11,16 +10,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GuiHandler {
-    public static Map<String, String> cancelledUpdates = new HashMap();
+    public static Map<String, String> cancelledUpdates = new HashMap<>();
 
     @SubscribeEvent
-    public void onGuiOpen(GuiScreenEvent event) {
+    public void onGuiOpen(GuiOpenEvent event) {
         GuiScreen gui = event.gui;
         if (gui.getClass().getName().equals("gg.skytils.skytilsmod.gui.RequestUpdateGui")) {
             System.out.println("Skytils Update GUI detected, closing GUI...");
-            Minecraft.getMinecraft().displayGuiScreen(null);
+            event.setCanceled(true);
 
-            String url;
+            String url = null;
             try {
                 Class<?> skytilsUpdateCheckerClass = Class.forName("gg.skytils.skytilsmod.core.UpdateChecker");
                 Method getterMethod = skytilsUpdateCheckerClass.getDeclaredMethod("getUpdateDownloadURL");
@@ -31,7 +30,7 @@ public class GuiHandler {
 
                 url = (String) getterMethod.invoke(constructor.newInstance());
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                TooManyUpdates.LOGGER.error(e);
             }
             cancelledUpdates.put("Skytils", url);
 
